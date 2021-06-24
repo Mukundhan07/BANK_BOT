@@ -1,0 +1,13 @@
+<table id="users-table-field">
+          <tbody><tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Total Amount</th>
+            <th>Due Amount</th>
+            <th>Paid Amount</th>
+            <th>Remain Amount</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </tbody><tr><td>100</td><td>prakash100</td><td>home</td><td>20000</td><td>100</td><td>200</td><td>19800</td><td><button onclick="editUser(100)">Edit</button></td><td><button onclick="deleteUser(100)">Delete</button></td></tr><tr><td>101</td><td>prakash101</td><td>home</td><td>20200</td><td>101</td><td>202</td><td>19998</td><td><button onclick="editUser(101)">Edit</button></td><td><button onclick="deleteUser(101)">Delete</button></td></tr><tr><td>102</td><td>prakash102</td><td>home</td><td>20400</td><td>102</td><td>204</td><td>20196</td><td><button onclick="editUser(102)">Edit</button></td><td><button onclick="deleteUser(102)">Delete</button></td></tr><tr><td>103</td><td>prakash103</td><td>home</td><td>20600</td><td>103</td><td>206</td><td>20394</td><td><button onclick="editUser(103)">Edit</button></td><td><button onclick="deleteUser(103)">Delete</button></td></tr><tr><td>104</td><td>prakash104</td><td>home</td><td>20800</td><td>104</td><td>208</td><td>20592</td><td><button onclick="editUser(104)">Edit</button></td><td><button onclick="deleteUser(104)">Delete</button></td></tr><tr><td>105</td><td>prakash105</td><td>home</td><td>21000</td><td>105</td><td>210</td><td>20790</td><td><button onclick="editUser(105)">Edit</button></td><td><button onclick="deleteUser(105)">Delete</button></td></tr><tr><td>106</td><td>prakash106</td><td>home</td><td>21200</td><td>106</td><td>212</td><td>20988</td><td><button onclick="editUser(106)">Edit</button></td><td><button onclick="deleteUser(106)">Delete</button></td></tr><tr><td>107</td><td>prakash107</td><td>home</td><td>21400</td><td>107</td><td>214</td><td>21186</td><td><button onclick="editUser(107)">Edit</button></td><td><button onclick="deleteUser(107)">Delete</button></td></tr><tr><td>108</td><td>prakash108</td><td>home</td><td>21600</td><td>108</td><td>216</td><td>21384</td><td><button onclick="editUser(108)">Edit</button></td><td><button onclick="deleteUser(108)">Delete</button></td></tr><tr><td>109</td><td>prakash109</td><td>home</td><td>21800</td><td>109</td><td>218</td><td>21582</td><td><button onclick="editUser(109)">Edit</button></td><td><button onclick="deleteUser(109)">Delete</button></td></tr><tr><td>110</td><td>prakash110</td><td>home</td><td>22000</td><td>110</td><td>220</td><td>21780</td><td><button onclick="editUser(110)">Edit</button></td><td><button onclick="deleteUser(110)">Delete</button></td></tr></table>

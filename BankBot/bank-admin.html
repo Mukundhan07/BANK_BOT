@@ -1,0 +1,198 @@
+<html>
+  <head>
+    <title>Admin</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/jszip.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.8.0/xlsx.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  </head>
+  <style>
+    #head {
+      padding: 3% 0% 3% 19%;
+      color: white;
+      background: rgb(255, 81, 0);
+    }
+
+    #side-bar {
+      position: fixed;
+      float: left;
+      background-color: #0074d9;
+      width: 18%;
+      height: 600px;
+    }
+
+    #nav {
+      
+      padding: 20% 0% 0% 10%;
+    }
+    #side-nav{
+      color: white;
+      text-decoration: none;
+      font-size: 20px;
+      padding: 5% 30% 5% 30%;
+      box-sizing: border-box;
+    }
+    a.active{
+      background-color: black;
+    }
+
+    #users-table,
+    #user-chats,#loan-reqs {
+      width: 100%;
+      padding: 5%;
+      display: none;
+    }
+
+    table {
+      width: 90%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      text-align: center;
+      padding-top: 2%;
+    }
+
+    #adjuster {
+      margin-left: 19%;
+      margin-top: -5%;
+    }
+
+    #add {
+      padding: 1% 6% 2% 6%;
+      border: 1px solid black;
+      color: white;
+      background: #659ec7;
+      text-decoration: none;
+    }
+
+    #button-hold {
+      padding-left: 70%;
+    }
+
+    #welcome {
+      text-align: center;
+    }
+
+    #welcome-head {
+      padding: 20% 0% 0% 0%;
+    }
+    #top-bar{
+      float: left;
+      padding-right: 5%;
+    }
+
+    #download{
+      color: white;
+      width: 120px;
+      height: 30px;
+      background: #659ec7;
+      cursor: pointer;
+      border-radius: 5%;
+      outline: 0;
+      padding: 1% 2% 1% 2%;
+    }
+    #downloadi{
+      color: white;
+      width: 150px;
+      height: 30px;
+      background: #659ec7;
+      cursor: pointer;
+      border-radius: 5%;
+      outline: 0;
+      padding: 1% 2% 2% 2%;
+    }
+    #side-nav:hover{
+      background-color: rgb(34, 33, 33);
+    }
+    #upload{
+      visibility: hidden;
+    }
+    #dl-icon{
+      color: white;
+    }
+  </style>
+
+  <body onload="load()">
+    <div id="side-bar">
+      <div id="nav">
+        <a id="side-nav" href="./bank-home.html">Home</a>
+      </div>
+      <div id="nav">
+        <a id="side-nav" href="#" onclick="openUsers()">Users</a>
+      </div>
+      <div id="nav">
+        <a id="side-nav" href="#" onclick="openChats()">Chats</a>
+      </div>
+      <div id="nav">
+        <a id="side-nav" href="#" onclick="openRequests()">Requests</a>
+      </div>
+    </div>
+    <h1 id="head">Admin</h1>
+    <div id="adjuster">
+      <div id="welcome">
+        <h1 id="welcome-head">Welcome admin!</h1>
+        Our bank also provides you <a href="./chatbot.html"> chat bot</a>
+      </div>
+      <div id="users-table">
+        <div id="button-hold">
+            <a href="./add-user.html" id="add"><i id="dl-icon" class="fa fa-user-plus"></i>  Add</a>
+            <button id="download" onclick="downloadUserTable('user-table','users-table-field')">
+              <i id="dl-icon" class="fa fa-download"></i>  Download
+            </button>
+        </div>
+        <table id="users-table-field">
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Total Amount</th>
+            <th>Due Amount</th>
+            <th>Paid Amount</th>
+            <th>Remain Amount</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </table>
+      </div>
+      <div id="user-chats">
+        <button id="downloadi" onclick="downloadUserTable('user-chats','chats-table')">
+          <i id="dl-icon" class="fa fa-download"></i>  Download
+        </button>
+        <table id="chats-table">
+          <tr>
+            <th>S.no.</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Economic status fall</th>
+            <th>Overcome</th>
+            <th>Company Resume</th>
+            <th>Income Source</th>
+            <th>Postpone</th>
+            <th>Resume Date</th>
+            <th>Letter</th>
+            <th></th>
+          </tr>
+        </table>
+      </div>
+      <div id="loan-reqs">
+        <button id="downloadi" onclick="downloadUserTable('loan_requests','reqs-table')">
+          <i id="dl-icon" class="fa fa-download"></i>  Download
+        </button>
+        <table id="reqs-table">
+          <tr>
+            <th>S.no.</th>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Document</th>
+            <th>Income Certificate</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </body>
+
+  <script src="./admin.js"></script>
+</html>

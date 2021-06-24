@@ -1,0 +1,181 @@
+<html>
+  <head>
+    <title>Add User</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <style>
+    body{
+      background-image: url('./images/common-bg.jpg');
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+    h1{
+      padding-top: 3%;
+      color: white;
+      padding-left: 20%;
+      font-family:sans-serif;
+    }
+    #container{
+      padding-left: 30%;
+    }
+    #form {
+      width: 50%;
+      padding-left: 10%;
+      background-color: rgba(0,0,0,0.7);
+      height: 600px;
+      box-sizing: border-box;
+    }
+
+    input {
+      border: 2px solid #0074d9;
+      border-radius: 10px;
+      width: 70%;
+      height: 40px;
+      outline: 0;
+    }
+    input[type='submit']{
+      border: 2px solid #0074d9;
+      border-radius: 10px;
+      width: 70%;
+      height: 40px;
+      outline: 0;
+      background: #0074d9;
+    }
+    #fields {
+      padding-top: 1%;
+    }
+    i{
+      padding: 80% 10% 80% 10%;
+    }
+    b{
+      color: white;
+      font-family: sans-serif;
+    }
+  </style>
+  <body onload="load()">
+    
+    <div id="container">
+      <form onsubmit="return go()" id="form" method="POST" action="./addUser.php">
+        <h1>Add User</h1>
+        <div id="fields">
+        <b>User Id</b><br />
+          <input type="text" id="userId" name="id" readonly /><button
+            onclick="setId()"
+          >
+            <i class="fa fa-refresh"></i>
+          </button>
+        </div>
+        <div id="fields">
+          <b>Name</b><br />
+          <input type="text" name="name" placeholder="Enter Name" required />
+        </div>
+        <div id="fields">
+        <b>Type</b><br />
+          <input
+            type="text"
+            name="type"
+            value="home"
+            placeholder="Enter type"
+            required
+          />
+        </div>
+        <div id="fields">
+        <b>Total Amount</b><br />
+          <input
+            type="number"
+            id="total"
+            name="totalAmount"
+            placeholder="Enter Total Amount"
+            oninput="setRemainAmount()"
+            required
+          />
+        </div>
+        <div id="fields">
+        <b>Due Amount</b><br />
+          <input
+            type="number"
+            name="dueAmount"
+            placeholder="Enter Due Amount"
+            required
+          />
+        </div>
+        <div id="fields">
+        <b>Paid Amount</b><br />
+          <input
+            type="number"
+            id="paid"
+            name="paidAmount"
+            placeholder="Enter Paid Amount"
+            oninput="setRemainAmount()"
+            required
+          />
+        </div>
+        <div id="fields">
+        <b>Remain Amount</b><br />
+          <input
+            type="text"
+            id="remain"
+            value="0"
+            name="remainAmount"
+            readonly
+          />
+        </div>
+        <div id="fields">
+          <br />
+          <input type="submit" name="submit" value="submit" />
+        </div>
+      </form>
+    </div>
+  </body>
+  <script>
+    var usersId=[];
+    function load() {
+      fetch("http://localhost:6061/get-all-details")
+      .then((request) => request.json())
+      .then((res) => {
+        res.forEach(element => {
+          usersId.push(element.id);
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+      setId();
+
+    }
+    function setId(){
+      var r = (Math.random() * 99999).toString();
+      var n = "1" + r.substring(0, 2);
+      document.getElementById("userId").value = n;
+    }
+    function setRemainAmount() {
+      var t = document.getElementById("total").value;
+      var p = document.getElementById("paid").value;
+      if (!isEmpty(p) && !isEmpty(t)) {
+        var r = parseInt(t) - parseInt(p);
+        if (r > 0) {
+          document.getElementById("remain").value = r;
+        } else {
+          document.getElementById("remain").value = 0;
+          alert("paid amount is greater than remain amount");
+        }
+      }
+    }
+    function go(){
+      var id=document.getElementById('userId').value;
+      if(usersId.includes(id)){
+        alert('id already exists');
+        return false;
+      }
+      else{
+        return true;
+      }
+    }
+    function isEmpty(a) {
+      return a === "" || a === undefined || a === null;
+    }
+  </script>
+</html>

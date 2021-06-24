@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat Bot</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <style type="text/css">
+    htm {
+      height: 100%;
+      background: linear-gradient(
+        to bottom right,
+        rgb(211, 245, 211),
+        rgb(208, 208, 240)
+      );
+    }
+    abbr {
+      text-decoration: none;
+    }
+    #box-container {
+      width: 100%;
+    }
+    #box {
+      padding-top: 1%;
+      padding-left: 35%;
+      box-sizing: border-box;
+    }
+    #note {
+      padding: 1% 30% 0% 30%;
+      box-sizing: border-box;
+    }
+    #note-block {
+      padding: 1%;
+      border: 1px solid green;
+      box-sizing: border-box;
+    }
+    #note-key {
+      padding: 1%;
+      color: green;
+      font-size: 25px;
+    }
+    #note-close {
+      padding: 1%;
+      float: right;
+      color: rgb(252, 122, 122);
+    }
+    #notes {
+      text-align: center;
+      margin-top: -5%;
+    }
+    .list {
+      list-style-type: none;
+      width: 40%;
+    }
+    .bot-div {
+      padding: 2%;
+      padding-right: 30%;
+    }
+    .human-div {
+      padding: 2%;
+      padding-left: 30%;
+    }
+    .bot {
+      border: 1px solid black;
+      padding: 2%;
+      border-radius: 0px 10px 10px 10px;
+      color: white;
+      background-color: green;
+    }
+    .human {
+      padding: 2%;
+      border: 1px solid black;
+      border-radius: 10px 0px 10px 10px;
+    }
+    #content{
+      padding: 0.2% 0% 1% 35%;
+    }
+    #text{
+      height: 30px;
+      width: 33%;
+    }
+    #send{
+      height: 30px;
+    }
+    #talk{
+      height: 30px;
+    }
+  </style>
+  <body onload="load()">
+    <div id="container">
+      <center>
+        <h1><abbr title="G Tiger Bank">
+          <a href="./bank-home.html">GTB </a></abbr> Welcomes you!</h1>
+        <h2>Bank Bot</h2>
+      </center>
+      <div id="note">
+        <div id="note-block">
+          <i id="note-key" class="fa fa-info-circle"></i>
+          <div id="note-close">
+            <i class="fa fa-close" onclick="closeNote()"></i>
+          </div>
+          <div id="notes">
+            <span>Enter your Loan Id to start conversation</span><br />
+            <span>Resume date format <b> MM/yyyy</b></span><br>
+            <span>text files only allowed </span>
+          </div>
+        </div>
+      </div>
+      <div id="box-container">
+        <div id="box">
+          <div class="list" id="voice-to-text"></div>
+        </div>
+      </div>
+      <div id="content">
+        <input
+          type="text"
+          name="text"
+          id="text"
+          placeholder="Enter your text here..."
+        />
+        <button id="send">
+          <abbr title="send"
+            ><i class="fa fa-send-o" onclick="getText()"></i
+          ></abbr>
+        </button>
+        <button id="talk" onclick="start()">
+          <abbr title="Turn on mic"> <i class="fa fa-microphone"></i></abbr>
+        </button>
+      </div>
+    </div>
+    <div id="footer">
+      <p style="color: white;">Footer</p>
+    </div>
+  </body>
+  <script type="text/javascript" src="./bot.js"></script>
+</html>

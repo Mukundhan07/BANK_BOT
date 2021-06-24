@@ -1,0 +1,159 @@
+<html>
+  <head>
+    <title>Apply Loan</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <style>
+    body{
+      
+      background-image: url('./images/common-bg.jpg');
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+    h1 {
+      color: white;
+      text-align: center;
+      font-family:sans-serif;
+    }
+    input[type="file"] {
+      display: none;
+    }
+    input[type="text"] {
+      border: 2px solid #0074d9;
+      border-radius: 10px;
+      width: 70%;
+      height: 40px;
+      outline: 0;
+    }
+    #container{
+      padding-top: 3%;
+      padding-left: 30%;
+      width: 40%;
+      
+    }
+    #label-proof,
+    #label-income {
+      border: 2px solid #0074d9;
+      border-radius: 10px;
+      background: rgb(247, 231, 231);
+      padding: 5px 10px 5px 10px;
+    }
+    #form {
+      padding-top: 5%;
+      padding-left: 0%;
+      background-color: rgba(0,0,0,0.7);
+      height: 500px;
+    }
+    #field {
+      padding-top: 5%;
+      padding-left: 25%;
+    }
+    #name-label,#type-label{
+      color: white;
+      font-size: 20px;
+      font-family:sans-serif;
+    }
+    span{
+      font-family:sans-serif;
+      font-size: 20px;
+      color: white;
+    }
+    #type {
+      background: rgb(189, 186, 186);
+    }
+    #button{
+      padding-top: 5%;
+      padding-left: 40%;
+    }
+    #apply{
+      width: 30%;
+      height: 40px;
+      color: white;
+      border:1px solid black;
+      border-radius: 5%;
+      background-color: #0074d9;
+    }
+  </style>
+  <body>
+    
+    <div id="container">
+      
+      <form
+        id="form"
+        method="POST"
+        action="./applyLoan.php"
+        onsubmit="return ready()"
+        autocomplete="off"
+        enctype="multipart/form-data"
+      ><h1>Apply Loan</h1>
+        <div id="field">
+          <label id="name-label" for="applicant-name">Name</label><br><br>
+          <input
+            type="text"
+            id="applicant-name"
+            name="applicant-name"
+            required
+          />
+        </div>
+        <div id="field">
+          <label id="type-label" for="loan-type">Loan Type</label><br><br>
+          <input type="text" id="type" value="home" name="loan-type" readonly />
+        </div>
+        <div id="field">
+          <span>Proof Document</span>&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp
+
+          <label id="label-proof" for="proof-doc" required
+            ><i class="fa fa-upload"></i>Add File</label
+          >
+          <input
+            type="file"
+            name="proof-doc"
+            id="proof-doc"
+            onchange="changeFile('label-proof',this)"
+            
+            required
+          />
+        </div>
+        <div id="field">
+          <span>Income Certificate</span>&nbsp&nbsp&nbsp&nbsp
+          <label id="label-income" for="income-doc"
+            ><i class="fa fa-upload" required></i>Add File</label
+          >
+          <input
+            type="file"
+            id="income-doc"
+            onchange="changeFile('label-income',this)"
+            name="income-doc"
+            required
+          />
+        </div>
+        <div id="button">
+          <input id="apply" type="submit" name="submit" value="Apply" onclick="ready()" required />
+        </div>
+      </form>
+    </div>
+  </body>
+  <script>
+    function changeFile(id, input) {
+      document.getElementById(id).innerHTML = input.value;
+    }
+    function isEmpty(a) {
+        return a === "" || a === undefined || a === null;
+    }
+    function ready() {
+      //alert("done");
+      var b=isEmpty(document.getElementById('proof-doc').value)||isEmpty(document.getElementById('income-doc').value);
+      if(b){
+          alert('All details required');
+          return false;
+      }
+      else{
+          return true;
+      }
+      
+    }
+  </script>
+</html>
